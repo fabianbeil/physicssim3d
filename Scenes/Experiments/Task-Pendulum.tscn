@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Experiments/Exp_Pendulum.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Meta/InputHandler.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Meta/FP-Camera.tscn" type="PackedScene" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="FP-Camera" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.99557 )
+
+[node name="Camera" parent="FP-Camera" index="0"]
+transform = Transform( 1, 0, 0, 0, 0.98534, 0.170605, 0, -0.170605, 0.98534, 0, 1.57215, 0 )
+
+[node name="InputHandler" parent="." instance=ExtResource( 2 )]
+
+[node name="Exp_Pendulum" parent="." instance=ExtResource( 1 )]
+
+[editable path="FP-Camera"]

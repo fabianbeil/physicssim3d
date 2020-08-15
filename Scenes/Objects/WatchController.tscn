@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Objects/WatchController.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Objects/3DButton.tscn" type="PackedScene" id=2]
+
+[node name="WatchController" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="ButtonStartatMovement" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37713, 0, 2.97984 )
+visible = false
+LabelText = "Auto"
+
+[node name="ButtonReady" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99171, 0, 0 )
+visible = false
+LabelText = "Ready"
+
+[node name="ButtonReset" parent="." instance=ExtResource( 2 )]
+visible = false
+LabelText = "Reset"
+[connection signal="button_clicked" from="ButtonReady" to="." method="_on_ButtonReady_button_clicked"]
+[connection signal="button_clicked" from="ButtonReset" to="." method="_on_ButtonReset_button_clicked"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Objects/Stopwatch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/xt-Origin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/WatchController.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Objects/FrictionRail.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Objects/FrictionBall.tscn" type="PackedScene" id=9]
+
+[node name="Exp_linearMotion_Ball" type="Spatial"]
+
+[node name="FrictionRail" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1.261, 0, 0, 0, 1, 0, 0, 0, 1, 2.082, 0, 0 )
+
+[node name="WatchController" parent="." instance=ExtResource( 6 )]
+
+[node name="xtOrigin" parent="WatchController" instance=ExtResource( 5 )]
+
+[node name="Stopwatch" parent="WatchController" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0 )
+
+[node name="Stopwatch2" parent="WatchController" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.894356, 0, 0 )
+
+[node name="Stopwatch3" parent="WatchController" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4762, 0, 0 )
+
+[node name="Stopwatch4" parent="WatchController" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+
+[node name="Stopwatch5" parent="WatchController" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5535, 0, 0 )
+
+[node name="Stopwatch6" parent="WatchController" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.18265, 0, 0 )
+
+[node name="Stopwatch7" parent="WatchController" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.92434, 0, 0 )
+
+[node name="Ball" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.235821, 0.163821, 0.0024091 )

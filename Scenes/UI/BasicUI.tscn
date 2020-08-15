@@ -1,0 +1,161 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Textures/Reset_Button.svg" type="Texture" id=1]
+[ext_resource path="res://Textures/Reset_Button_.svg" type="Texture" id=2]
+[ext_resource path="res://Scripts/Objects/UIElements/ResetButton.gd" type="Script" id=3]
+[ext_resource path="res://UI_default_theme.tres" type="Theme" id=4]
+[ext_resource path="res://Scripts/Objects/MetaObjects/Physics_Object_UI.gd" type="Script" id=5]
+[ext_resource path="res://pt-sans.regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Textures/ForceBar_empty.png" type="Texture" id=7]
+[ext_resource path="res://Textures/ForceBar_full.png" type="Texture" id=8]
+[ext_resource path="res://Textures/MainMenu_Button.svg" type="Texture" id=9]
+[ext_resource path="res://Textures/MainMenu_Button_pressed.svg" type="Texture" id=10]
+[ext_resource path="res://Scripts/UI/OSD_UI.gd" type="Script" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 6 )
+
+[node name="OSD_UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 4 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="General" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="General"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 434.0
+margin_bottom = 133.0
+rect_scale = Vector2( 0.5, 0.5 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResetButton" type="TextureButton" parent="General/VBoxContainer"]
+margin_right = 434.0
+margin_bottom = 87.0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="General/VBoxContainer"]
+margin_top = 91.0
+margin_right = 434.0
+margin_bottom = 133.0
+rect_clip_content = true
+custom_fonts/font = SubResource( 1 )
+text = "M: Mausnavigation umschalten "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_back_to_main" type="TextureButton" parent="General"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -50.0
+margin_top = 10.0
+margin_bottom = 87.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TaskUI" type="Control" parent="." groups=[
+"TaskUI",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+mouse_filter = 2
+mouse_default_cursor_shape = 1
+theme = ExtResource( 4 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TaskUI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -48.0
+margin_right = 85.0
+margin_bottom = -10.0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_type" type="Label" parent="TaskUI/VBoxContainer"]
+margin_right = 75.0
+margin_bottom = 22.0
+text = "Typ"
+
+[node name="lbl_mass" type="Label" parent="TaskUI/VBoxContainer"]
+margin_top = 26.0
+margin_right = 75.0
+margin_bottom = 48.0
+text = "0"
+
+[node name="lbl_hint" type="Label" parent="TaskUI/VBoxContainer"]
+margin_top = 52.0
+margin_right = 75.0
+margin_bottom = 74.0
+text = "Hinweis"
+
+[node name="ForceBar" type="VBoxContainer" parent="TaskUI"]
+anchor_left = 0.934
+anchor_top = 0.95
+anchor_right = 0.934
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TaskUI/ForceBar"]
+margin_right = 109.0
+margin_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Anschubsen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="TaskUI/ForceBar"]
+margin_top = 26.0
+margin_right = 109.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
+[connection signal="pressed" from="General/VBoxContainer/ResetButton" to="General/VBoxContainer/ResetButton" method="_on_ResetButton_pressed"]
+[connection signal="pressed" from="General/btn_back_to_main" to="." method="_on_btn_back_to_main_pressed"]

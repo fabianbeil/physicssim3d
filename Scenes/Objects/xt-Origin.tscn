@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Materials/SpatialMaterials/Stopwatch-green.tres" type="Material" id=1]
+[ext_resource path="res://Scripts/Objects/xtOrigin.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Objects/DigitalDisplay.tscn" type="PackedScene" id=6]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.2299, 1, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+
+[node name="xtOrigin" type="Spatial" groups=[
+"Origin",
+]]
+script = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.05, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area/CollisionShape"]
+transform = Transform( 0.067, 0, 0, 0, 1, 0, 0, 0, 1, -0.213, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 1 )
+
+[node name="Display00" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0.5 )
+start_text = "0.0 m"
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

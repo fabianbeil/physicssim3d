@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://DisplayFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/Objects/DigitalDisplay.gd" type="Script" id=2]
+
+[sub_resource type="QuadMesh" id=1]
+size = Vector2( 2, 1 )
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="SpatialMaterial" id=3]
+resource_local_to_scene = true
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = SubResource( 2 )
+
+[node name="DigitalDisplay" type="Spatial"]
+script = ExtResource( 2 )
+start_text = "Test"
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 1024, 600 )
+transparent_bg = true
+hdr = false
+
+[node name="Label" type="Label" parent="Viewport"]
+anchor_left = 0.43
+anchor_right = 0.43
+margin_right = 124.0
+margin_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Label"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, -1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="Spatial2" type="Spatial" parent="."]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial2"]
+transform = Transform( 1, 0, 0, 0, -1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )

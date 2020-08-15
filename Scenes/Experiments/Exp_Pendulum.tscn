@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Objects/Exp_Pendulum.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Objects/Pendulum_Mass.gd" type="Script" id=2]
+
+[sub_resource type="SphereShape" id=1]
+
+[sub_resource type="SphereMesh" id=2]
+
+[sub_resource type="SphereShape" id=3]
+
+[sub_resource type="SphereMesh" id=4]
+
+[node name="Exp_Pendulum" type="Spatial"]
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="Mount" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Mount"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Mount"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Mass" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Mass"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Mass"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="PinJoint" type="PinJoint" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+nodes/node_a = NodePath("../StaticBody")
+nodes/node_b = NodePath("../RigidBody")

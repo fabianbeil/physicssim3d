@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Experiments/Exp_linearMotion_Cube.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Tasks/1BodyLinearMotion.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/UI/BasicUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Meta/FP-Camera.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Meta/InputHandler.tscn" type="PackedScene" id=12]
+
+[node name="OneBodyLinearMotion" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="InputHandler" parent="." instance=ExtResource( 12 )]
+
+[node name="UI" parent="." instance=ExtResource( 6 )]
+
+[node name="FP-Camera" parent="." instance=ExtResource( 11 )]
+transform = Transform( 0.985517, 0, 0.169573, 0, 1, 0, -0.169573, 0, 0.985517, 3.35685, 0.579207, 5.06702 )
+
+[node name="Exp_linearMotion_Cube" parent="." instance=ExtResource( 1 )]

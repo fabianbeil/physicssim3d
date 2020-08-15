@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Objects/3DButton.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Objects/DigitalDisplay.tscn" type="PackedScene" id=3]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[node name="3DButton" type="Area"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.0265092, 0, 0.355736 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Display" parent="." instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 1.48433, 0.670219, 0, -1.34044, 0.742163, 0.0114942, 0.221307, -0.302807 )
+start_text = "Label"
+[connection signal="button_clicked" from="." to="." method="_on_3DButton_button_clicked"]
+[connection signal="input_event" from="." to="." method="_on_3DButton_input_event"]
