@@ -3,6 +3,6 @@ Collection of basic physics experiments in 3D. Originally designed as replacemen
 ## Installation
 - Download appropriate executable  and corrensponding .pck-file from `bin`
 - Save in the same folder
-- Run executable (Linux users: mark .x86_64-fiel as executable)
+- Run executable (Linux users: mark .x86_64-file as executable)
 ### Warning
-apk for Android completely untested and likely unusable
+apk for Android is completely untested and most likely unusable
