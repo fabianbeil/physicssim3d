@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Objects/Puck.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Meta/InputHandler.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Objects/AirhockeyTable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Meta/FP-Camera.tscn" type="PackedScene" id=4]
+
+[node name="Exp_AirHockey1" type="Spatial"]
+
+[node name="AirhockeyTable" parent="." instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+
+[node name="Puck" parent="." instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.127211, 0 )
+
+[node name="FP-Camera" parent="." instance=ExtResource( 4 )]
+
+[node name="InputHandler" parent="." instance=ExtResource( 2 )]
