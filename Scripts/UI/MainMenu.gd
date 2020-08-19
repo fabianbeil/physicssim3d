@@ -30,3 +30,7 @@ func _on_btn_lin_ball_pressed():
 
 func _on_btn_lin_both_pressed():
 	get_tree().change_scene("res://Scenes/Tasks/linearMotion_Compare_Cube_Sphere.tscn")
+
+
+func _on_btn_pendulum1_pressed():
+	get_tree().change_scene("res://Scenes/Tasks/Task-Pendulum.tscn")

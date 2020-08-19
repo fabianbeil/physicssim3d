@@ -31,7 +31,7 @@ __meta__ = {
 
 [node name="General" type="VBoxContainer" parent="HBoxContainer"]
 margin_right = 81.0
-margin_bottom = 118.0
+margin_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 __meta__ = {
@@ -53,7 +53,7 @@ text = "Exit"
 [node name="Kinetics" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 85.0
 margin_right = 293.0
-margin_bottom = 118.0
+margin_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 __meta__ = {
@@ -83,7 +83,14 @@ margin_top = 90.0
 margin_right = 208.0
 margin_bottom = 118.0
 text = "lineare Bewegung: Vergleich"
+
+[node name="btn_pendulum1" type="Button" parent="HBoxContainer/Kinetics"]
+margin_top = 122.0
+margin_right = 208.0
+margin_bottom = 150.0
+text = "Fadenpendel"
 [connection signal="pressed" from="HBoxContainer/General/btn_exit" to="." method="_on_btn_exit_pressed"]
 [connection signal="pressed" from="HBoxContainer/Kinetics/btn_lin_cube" to="." method="_on_btn_lin_cube_pressed"]
 [connection signal="pressed" from="HBoxContainer/Kinetics/btn_lin_ball" to="." method="_on_btn_lin_ball_pressed"]
 [connection signal="pressed" from="HBoxContainer/Kinetics/btn_lin_both" to="." method="_on_btn_lin_both_pressed"]
+[connection signal="pressed" from="HBoxContainer/Kinetics/btn_pendulum1" to="." method="_on_btn_pendulum1_pressed"]

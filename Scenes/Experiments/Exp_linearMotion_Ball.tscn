@@ -14,6 +14,7 @@ transform = Transform( 1.261, 0, 0, 0, 1, 0, 0, 0, 1, 2.082, 0, 0 )
 [node name="WatchController" parent="." instance=ExtResource( 6 )]
 
 [node name="xtOrigin" parent="WatchController" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0405951, 0, 0 )
 
 [node name="Stopwatch" parent="WatchController" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0 )

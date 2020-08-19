@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Materials/SpatialMaterials/Stopwatch-green.tres" type="Material" id=1]
+[ext_resource path="res://Scripts/Objects/FixedListStopwatch.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Objects/DigitalDisplay.tscn" type="PackedScene" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.01, 1, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+
+[node name="FixedListStopwatch" type="Spatial" groups=[
+"Uhren",
+]]
+script = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.05, 0 )
+linear_damp = 0.0
+angular_damp = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area/CollisionShape"]
+transform = Transform( 0.071, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 1 )
+
+[node name="Title_time" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0.818005 )
+start_text = "Zeit"
+
+[node name="Title_mean" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 2, 0, 0.824 )
+start_text = "Mittelwert"
+
+[node name="display_mean" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 2, 0, 1.25 )
+start_text = "0 s"
+[connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

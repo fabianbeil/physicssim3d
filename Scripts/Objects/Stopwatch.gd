@@ -9,7 +9,7 @@ var distance_to_origin = 0.0
 var running = false
 onready var timedisplay = get_node("Knoepfe_und_Display/TimeDisplay")
 onready var distance_display = get_node("Knoepfe_und_Display/DistanceDisplay")
-onready var camera = get_tree().get_nodes_in_group("CameraBody")[0]
+#onready var camera = get_tree().get_nodes_in_group("CameraBody")[0]
 
 var auto = false
 var origin: Spatial
@@ -84,3 +84,8 @@ func _on_SlideHandle_input_event(camera, event, click_position, click_normal, sh
 		var ray_parameter = -from.y/direction.y
 		var x_of_height_zero = (from + ray_parameter*direction).x
 		transform.origin.x = x_of_height_zero
+
+
+func _on_Area_area_entered(area):
+	if auto:
+		stop_watch()
