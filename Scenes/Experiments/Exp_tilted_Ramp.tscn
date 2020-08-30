@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Objects/FrictionRail.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Objects/Click-To-Release-Ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Meta/InputHandler.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/UI/BasicUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Meta/FP-Camera.tscn" type="PackedScene" id=5]
+
+[node name="Exp_tilted_Ramp" type="Spatial"]
+
+[node name="FrictionRail" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.985803, 0.167904, 0, -0.167904, 0.985803, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="ClickToReleaseBall" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -1.83166, 0.427122, 0 )
+time_between_measurements = 0.2
+measurement_point_rotation = Vector3( 0, 90, 0 )
+
+[node name="FP-Camera" parent="." instance=ExtResource( 5 )]
+
+[node name="InputHandler" parent="." instance=ExtResource( 3 )]
+
+[node name="OSD_UI" parent="." instance=ExtResource( 4 )]
+
+[node name="ForceBar" parent="OSD_UI/TaskUI" index="1"]
+visible = false
+
+[editable path="OSD_UI"]
