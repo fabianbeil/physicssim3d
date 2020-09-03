@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Objects/FrictionRail.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Objects/Click-To-Release-Ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Meta/InputHandler.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/UI/BasicUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Meta/FP-Camera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Room.dae" type="PackedScene" id=6]
 
 [node name="Exp_tilted_Ramp" type="Spatial"]
 
@@ -25,4 +26,17 @@ measurement_point_rotation = Vector3( 0, 90, 0 )
 [node name="ForceBar" parent="OSD_UI/TaskUI" index="1"]
 visible = false
 
+[node name="Room" parent="." instance=ExtResource( 6 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 1.87313, -1.54933, 0 )
+
+[node name="Plane006" parent="Room" index="7"]
+transform = Transform( -1.00476, -3.25841e-07, 6.11048e-15, 0, -4.37114e-08, -0.429017, 3.27393e-07, -1, 1.87529e-08, 0, -0.0125651, 3 )
+
+[node name="Light" parent="Room" index="15"]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.96619, 1.67708, 0 )
+omni_range = 15.0
+omni_attenuation = 1.86607
+
 [editable path="OSD_UI"]
+
+[editable path="Room"]
