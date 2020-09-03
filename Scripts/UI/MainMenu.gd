@@ -34,3 +34,8 @@ func _on_btn_lin_both_pressed():
 
 func _on_btn_pendulum1_pressed():
 	get_tree().change_scene("res://Scenes/Tasks/Task-Pendulum.tscn")
+
+
+
+func _on_btn_linear_accelereation_pressed():
+	get_tree().change_scene("res://Scenes/Tasks/Task_tilted_Ramp.tscn")

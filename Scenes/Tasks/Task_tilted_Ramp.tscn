@@ -18,6 +18,7 @@ time_between_measurements = 0.2
 measurement_point_rotation = Vector3( 0, 90, 0 )
 
 [node name="FP-Camera" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.739584, 0, -0.673064, 0, 1, 0, 0.673064, 0, 0.739584, -5.69848, 1.06817, 3.95659 )
 
 [node name="InputHandler" parent="." instance=ExtResource( 3 )]
 
@@ -31,6 +32,9 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 1.87313, -1.54933, 0 )
 
 [node name="Plane006" parent="Room" index="7"]
 transform = Transform( -1.00476, -3.25841e-07, 6.11048e-15, 0, -4.37114e-08, -0.429017, 3.27393e-07, -1, 1.87529e-08, 0, -0.0125651, 3 )
+
+[node name="Camera" parent="Room" index="14"]
+visible = false
 
 [node name="Light" parent="Room" index="15"]
 transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.96619, 1.67708, 0 )
