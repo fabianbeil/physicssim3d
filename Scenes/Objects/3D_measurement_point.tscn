@@ -10,13 +10,13 @@
 script = ExtResource( 3 )
 
 [node name="PositionDisplay_x" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85908, 0.0189703, -0.460567 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.85908, -0.194106, -0.460567 )
 
 [node name="PositionDisplay_y" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8558, -0.333309, -0.460567 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.8558, -0.333309, -0.460567 )
 
 [node name="PositionDisplay_z" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8558, -0.710751, -0.460567 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.8558, -0.472607, -0.460567 )
 
 [node name="TimeDisplay" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22244, -0.33953, -0.460567 )

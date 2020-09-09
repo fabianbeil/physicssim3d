@@ -21,6 +21,7 @@ var UI: Node
 onready var direction = transform.basis.x.normalized()
 var total_time = 0
 var this_scale = 1
+var StartingPoint: Vector3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,6 +34,7 @@ func _ready():
 		add_child(new_point)
 		measurement_points.append(new_point)
 	this_scale = transform.basis.get_scale().x
+	UI = get_tree().get_nodes_in_group("TaskUI")[0]
 		
 	
 func _physics_process(delta):
@@ -44,11 +46,12 @@ func _physics_process(delta):
 			spawn_measurement_point()
 	if push == 1:
 		increase_force()
-		#UI.set_force(force,maxforce)
+		UI.set_force(force,maxforce)
 	if go:
 		$RigidBody.add_central_force(direction*force)
-		#UI.set_force(0,1)
+		UI.set_force(0,1)
 		go = 0
+		StartingPoint = transform.origin
 	
 
 func _on_RigidBody_input_event(camera, event, click_position, click_normal, shape_idx):
@@ -68,7 +71,7 @@ func spawn_measurement_point():
 	var current_position = $RigidBody.transform.origin
 	this_point.transform.origin = current_position
 	this_point.visible = true
-	this_point.set_coordinates((current_position.x-measurement_points[0].transform.origin.x)*this_scale,(current_position.y-measurement_points[0].transform.origin.y)*this_scale,(current_position.z-measurement_points[0].transform.origin.z)*this_scale,total_time)
+	this_point.set_coordinates((current_position.x-StartingPoint.x)*this_scale,(current_position.y-StartingPoint.y)*this_scale,(current_position.z-StartingPoint.z)*this_scale,total_time)
 	number_of_current_point += 1
 
 func increase_force():

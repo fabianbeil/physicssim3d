@@ -71,14 +71,29 @@ func _input(event):
 		click_ray_from = FPS_Cam.project_ray_origin(event.position)
 		click_ray_to = click_ray_from + FPS_Cam.project_ray_normal(event.position) * ray_length
 		click_ray = true
+	
+	if event is InputEventMouseButton and event.is_pressed() and Input.get_mouse_mode() == 2 and event.button_index == BUTTON_WHEEL_UP:
+		mouse_sensitivity = min(1,mouse_sensitivity + 0.01)
+		key_sensitivity = min(1,key_sensitivity + 0.01)
+	if event is InputEventMouseButton and event.is_pressed() and Input.get_mouse_mode() == 2 and event.button_index == BUTTON_WHEEL_DOWN:
+		key_sensitivity = max(0,key_sensitivity - 0.01)
+		mouse_sensitivity = max(0,mouse_sensitivity - 0.01)
 			
 	if event.is_action_pressed("toggle_mouse"):
 		toggle_mouse_view()
+	
+	if event.is_action_pressed("toggle_zoom"):
+		toggle_zoom()
 		
 	
 	
 
-
+func toggle_zoom():
+	if FPS_Cam.fov == 80:
+		FPS_Cam.fov = 20
+	else:
+		FPS_Cam.fov = 80
+		
 func toggle_mouse_view():
 	if Input.get_mouse_mode() == 0:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
