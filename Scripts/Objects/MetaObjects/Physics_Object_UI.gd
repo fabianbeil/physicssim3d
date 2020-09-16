@@ -7,11 +7,16 @@ extends Control
 onready var Forcebar_bar = get_node("ForceBar/TextureProgress")
 onready var lbl_type = get_node("VBoxContainer/lbl_type")
 onready var lbl_mass = get_node("VBoxContainer/lbl_mass")
-
+onready var haircross = get_node("Haircross")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 	
+func toggle_haircross():
+	if haircross.visible:
+		haircross.visible = false
+	else:
+		haircross.visible = true
 	
 func hide_force_bar():
 	$ForceBar.visible = false

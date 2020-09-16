@@ -6,3 +6,5 @@
 background_mode = 2
 background_sky = SubResource( 1 )
 background_energy = 0.2
+ss_reflections_enabled = true
+glow_enabled = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Room.dae" type="PackedScene" id=1]
 [ext_resource path="res://Materials/PhysicsMaterials/VeryRoughWall.tres" type="PhysicsMaterial" id=2]
@@ -10,6 +10,32 @@ extents = Vector3( 1.95542, 0.2, 1 )
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 10.0091, 0.38463, 6.02061 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.609091 ), 0.0, 0.0, 0, 0, Vector2( 0.278481, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.263636 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.1
+initial_velocity_random = 1.0
+linear_accel = 0.1
+linear_accel_random = 1.0
+scale_random = 1.0
+scale_curve = SubResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_transparent = true
+albedo_color = Color( 0, 0, 0, 0.631373 )
+
+[sub_resource type="SphereMesh" id=8]
+material = SubResource( 7 )
+radius = 0.1
+height = 0.2
 
 [node name="Room" type="Spatial"]
 
@@ -64,5 +90,12 @@ physics_material_override = ExtResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="Waende_Collider/StaticBody3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95335, 0, 0 )
 shape = SubResource( 3 )
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0119598, 1.79569, -5.46966 )
+amount = 300
+lifetime = 2.0
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 8 )
 
 [editable path="Room"]

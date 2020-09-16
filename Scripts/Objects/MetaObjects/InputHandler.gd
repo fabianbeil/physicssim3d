@@ -11,6 +11,8 @@ var ray_length = 1000
 var click_ray = false
 var click_ray_from: Vector3
 var click_ray_to: Vector3
+var TaskUI: Control
+var click_or_release = "click"
 export var scroll_speed = 0.3
 export var mouse_sensitivity = 0.3
 export var key_sensitivity = .1
@@ -20,16 +22,18 @@ export var key_sensitivity = .1
 func _ready():
 	FPS_Cam = get_tree().get_nodes_in_group("Camera")[0]
 	FPS_Body = get_tree().get_nodes_in_group("CameraBody")[0]
-	
+	if len(get_tree().get_nodes_in_group("TaskUI")) > 0:
+		TaskUI = get_tree().get_nodes_in_group("TaskUI")[0]
 	
 func shoot_click_ray():
-	pass
-#	var space_state = get_world().direct_space_state
-#	var result = space_state.intersect_ray(click_ray_from, click_ray_to, [self, FPS_Body])
-#	if result:
-#		print_debug(result.collider)
-#	else:
-#		print_debug("Nix_Getroffen")
+	var space_state = get_world().direct_space_state
+	var result = space_state.intersect_ray(click_ray_from, click_ray_to, [self, FPS_Body])
+	if result:
+		var RB_Parent = result.collider.get_parent()
+		if RB_Parent.has_method("click") and click_or_release == "click":
+			RB_Parent.click()
+		if RB_Parent.has_method("release") and click_or_release == "release":
+			RB_Parent.release()
 
 func _physics_process(delta):
 	if click_ray:
@@ -64,14 +68,20 @@ func _input(event):
 		
 					
 		
-	if event is InputEventMouseButton and event.is_pressed() and Input.get_mouse_mode() == 2 and event.button_index == BUTTON_LEFT:
-		toggle_mouse_view()
+	#if event is InputEventMouseButton and event.is_pressed() and Input.get_mouse_mode() == 2 and event.button_index == BUTTON_LEFT:
+	#	toggle_mouse_view()
 		
-	if event is InputEventMouseButton and event.is_pressed() and Input.get_mouse_mode() == 0 and event.button_index == BUTTON_LEFT:
+	if event is InputEventMouseButton and event.is_action_pressed("left_click"): #and Input.get_mouse_mode() == 0
 		click_ray_from = FPS_Cam.project_ray_origin(event.position)
 		click_ray_to = click_ray_from + FPS_Cam.project_ray_normal(event.position) * ray_length
+		click_or_release = "click"
 		click_ray = true
 	
+	if event is InputEventMouseButton and event.is_action_released("left_click"): #and Input.get_mouse_mode() == 0
+		click_ray_from = FPS_Cam.project_ray_origin(event.position)
+		click_ray_to = click_ray_from + FPS_Cam.project_ray_normal(event.position) * ray_length
+		click_or_release = "release"
+		click_ray = true	
 	if event is InputEventMouseButton and event.is_pressed() and Input.get_mouse_mode() == 2 and event.button_index == BUTTON_WHEEL_UP:
 		mouse_sensitivity = min(1,mouse_sensitivity + 0.01)
 		key_sensitivity = min(1,key_sensitivity + 0.01)
@@ -99,5 +109,7 @@ func toggle_mouse_view():
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif Input.get_mouse_mode() == 2:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if TaskUI != null:
+		TaskUI.toggle_haircross()
 		
 

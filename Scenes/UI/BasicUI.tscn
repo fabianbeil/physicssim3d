@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Textures/Reset_Button.svg" type="Texture" id=1]
 [ext_resource path="res://Textures/Reset_Button_.svg" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Textures/MainMenu_Button.svg" type="Texture" id=9]
 [ext_resource path="res://Textures/MainMenu_Button_pressed.svg" type="Texture" id=10]
 [ext_resource path="res://Scripts/UI/OSD_UI.gd" type="Script" id=11]
+[ext_resource path="res://Textures/Haircross.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -158,5 +159,38 @@ size_flags_horizontal = 3
 size_flags_vertical = 2
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
+
+[node name="Haircross" type="TextureRect" parent="TaskUI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.0
+margin_top = -20.0
+margin_right = 62.0
+margin_bottom = 63.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Space_Credit" type="Label" parent="TaskUI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -55.0
+margin_top = -13.0
+margin_right = 110.5
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Space Texture by ESO/S. Brunier"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="General/VBoxContainer/ResetButton" to="General/VBoxContainer/ResetButton" method="_on_ResetButton_pressed"]
 [connection signal="pressed" from="General/btn_back_to_main" to="." method="_on_btn_back_to_main_pressed"]

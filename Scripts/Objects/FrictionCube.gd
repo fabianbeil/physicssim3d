@@ -27,6 +27,15 @@ func _ready():
 	#UI.set_force(0,1)
 	
 
+func click():
+	push = 1 
+	
+func release():
+	push = 0
+	go = 1
+	UI.set_force(0,1)
+	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if push == 1:
@@ -45,10 +54,7 @@ func increase_force():
 func _on_RigidBody_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("left_click"):
-			push = 1 
+			click()
 		if event.is_action_released("left_click"):
-			push = 0
-			go = 1
-			UI.set_force(0,1)
-	
+			release()
 		

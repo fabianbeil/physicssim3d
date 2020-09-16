@@ -37,6 +37,16 @@ func _ready():
 	UI = get_tree().get_nodes_in_group("TaskUI")[0]
 		
 	
+func click():
+	push = 1 
+	
+func release():
+	$RigidBody.set_mode(RigidBody.MODE_RIGID)
+	spawn_measurements = true
+	push = 0
+	go = 1
+
+
 func _physics_process(delta):
 	if spawn_measurements and number_of_current_point < number_of_points:
 		time = time + delta
