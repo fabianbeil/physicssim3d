@@ -9,7 +9,7 @@ var go = 0
 var spawn_measurements = false
 var time = 0
 onready var measureemt_point = preload("res://Scenes/Objects/3D_measurement_point.tscn")
-var number_of_points = 15
+export var number_of_points = 15
 var measurement_points = []
 var number_of_current_point = 0
 export var time_between_measurements = 0.075
@@ -22,6 +22,9 @@ onready var direction = transform.basis.x.normalized()
 var total_time = 0
 var this_scale = 1
 var StartingPoint: Vector3
+export var relative = false
+export var relative_to: NodePath
+export var swap_yz_on_points = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,7 +33,8 @@ func _ready():
 		var new_point = measureemt_point.instance()
 		new_point.visible = false
 		new_point.scale = new_point.scale * 2
-		new_point.rotation_degrees = measurement_point_rotation
+		if swap_yz_on_points:
+			new_point.swap_yz = true
 		add_child(new_point)
 		measurement_points.append(new_point)
 	this_scale = transform.basis.get_scale().x
@@ -61,8 +65,11 @@ func _physics_process(delta):
 		$RigidBody.add_central_force(direction*force)
 		UI.set_force(0,1)
 		go = 0
-		StartingPoint = transform.origin
-	
+		if relative:
+			StartingPoint = get_node(relative_to).transform.origin
+			print_debug(StartingPoint, transform.origin)
+		else:
+			StartingPoint = transform.origin
 
 func _on_RigidBody_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton:
@@ -80,6 +87,7 @@ func spawn_measurement_point():
 	var this_point = measurement_points[number_of_current_point]
 	var current_position = $RigidBody.transform.origin
 	this_point.transform.origin = current_position
+	this_point.rotation_degrees = measurement_point_rotation
 	this_point.visible = true
 	this_point.set_coordinates((current_position.x-StartingPoint.x)*this_scale,(current_position.y-StartingPoint.y)*this_scale,(current_position.z-StartingPoint.z)*this_scale,total_time)
 	number_of_current_point += 1

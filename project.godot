@@ -81,5 +81,7 @@ toggle_zoom={
 
 [rendering]
 
+quality/subsurface_scattering/quality=0
 quality/filters/msaa=1
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false

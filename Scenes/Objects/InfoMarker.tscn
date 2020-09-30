@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="CapsuleMesh" id=1]
+radius = 0.5
+mid_height = 3.0
+
+[sub_resource type="SphereMesh" id=2]
+radius = 0.6
+height = 1.2
+
+[sub_resource type="Animation" id=3]
+resource_name = "Dopsen"
+length = 2.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Ausrufezeichen:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1, 0.5, 0.9, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Ausrufezeichen:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.503828, 0.0123256, 0.503828, -0.0123256, 2, -0.12512, -0.0159702, 0.12512, 0.0159702, 0, -0.496172, -0.0123256, 0.496172, 0.0123256, 0.0252353, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.6701 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Ausrufezeichen:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1, 0.5, 0.9, 1 )
+}
+
+[node name="InfoMarker" type="Spatial"]
+
+[node name="Ausrufezeichen" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.194821, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Ausrufezeichen"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.5, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Ausrufezeichen"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Dopsen = SubResource( 3 )

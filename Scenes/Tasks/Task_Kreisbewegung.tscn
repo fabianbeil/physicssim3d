@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Meta/InputHandler.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Meta/FP-Camera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Room.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Experiments/Exp_Kreisbewegung.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/UI/BasicUI.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.227451, 0.227451, 0.227451, 1 )
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 6, 5 )
+
+[node name="Task_Kreisbewegung" type="Spatial"]
+
+[node name="Room" parent="." instance=ExtResource( 3 )]
+
+[node name="Plane" parent="Room/Room" index="14"]
+material/0 = SubResource( 3 )
+
+[node name="FP-Camera" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.77158, 0, -0.636132, 0, 1, 0, 0.636132, 0, 0.77158, -2.79448, 1.04414, 3.95659 )
+
+[node name="InputHandler" parent="." instance=ExtResource( 1 )]
+
+[node name="Kreisbewegung" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20245, -0.685332, 0 )
+
+[node name="OSD_UI" parent="." instance=ExtResource( 5 )]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84235, -0.788604, 0 )
+visible = false
+mesh = SubResource( 2 )
+material/0 = null
+
+[editable path="Room"]
+
+[editable path="Room/Room"]
