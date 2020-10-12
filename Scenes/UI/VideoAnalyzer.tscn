@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Videos/0001-0118.webm" type="VideoStream" id=1]
+[ext_resource path="res://Scripts/UI/VideoAnalyzer.gd" type="Script" id=2]
+
+[node name="VideoAnalyzer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 21.4057
+margin_top = 542.278
+margin_right = 69.4057
+margin_bottom = 581.278
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 80.8661
+margin_top = 541.089
+margin_right = 128.866
+margin_bottom = 580.089
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.2
+autostart = true
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

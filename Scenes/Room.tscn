@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Room.dae" type="PackedScene" id=1]
 [ext_resource path="res://Materials/PhysicsMaterials/VeryRoughWall.tres" type="PhysicsMaterial" id=2]
 [ext_resource path="res://Scripts/Objects/SpacePortal.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Meta/FP-Camera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Meta/InputHandler.tscn" type="PackedScene" id=5]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -113,6 +115,11 @@ omni_range = 0.7
 
 [node name="CollisionShape" type="CollisionShape" parent="SpacePortal/Area"]
 shape = SubResource( 9 )
+
+[node name="FP-Camera" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.705513, 0, -0.708697, 0, 1, 0, 0.708697, 0, 0.705513, -1.53084, 1, 5.36089 )
+
+[node name="InputHandler" parent="." instance=ExtResource( 5 )]
 [connection signal="input_event" from="SpacePortal/Area" to="SpacePortal" method="_on_Area_input_event"]
 [connection signal="mouse_entered" from="SpacePortal/Area" to="SpacePortal" method="_on_Area_mouse_entered"]
 [connection signal="mouse_exited" from="SpacePortal/Area" to="SpacePortal" method="_on_Area_mouse_exited"]

@@ -20,6 +20,7 @@ transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, -
 [node name="InputHandler" parent="." instance=ExtResource( 3 )]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6678, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 4 )
 
@@ -39,3 +40,6 @@ __meta__ = {
 }
 
 [node name="OSD_UI" parent="." instance=ExtResource( 5 )]
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )

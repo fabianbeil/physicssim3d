@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Materials/PhysicsMaterials/DissipativeFriction.tres" type="PhysicsMaterial" id=1]
-[ext_resource path="res://Shapes/WedgeRailing.tres" type="Shape" id=2]
+[ext_resource path="res://Shapes/WedgeRailing.tres" type="Shape" id=1]
+[ext_resource path="res://Materials/PhysicsMaterials/AlmostNoFriction.tres" type="PhysicsMaterial" id=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2, 0.01, 0.1 )
@@ -11,12 +11,12 @@ extents = Vector3( 2, 0.01, 0.1 )
 [sub_resource type="PrismMesh" id=3]
 left_to_right = 0.0
 
-[node name="FrictionRail" type="Spatial"]
+[node name="NoFrictionRail" type="Spatial"]
 
 [node name="RigidBody" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 0, 0 )
 collision_layer = 3
-physics_material_override = ExtResource( 1 )
+physics_material_override = ExtResource( 2 )
 
 [node name="Rail" type="CollisionShape" parent="RigidBody"]
 shape = SubResource( 1 )
@@ -28,7 +28,7 @@ material/0 = null
 
 [node name="Wall" type="CollisionShape" parent="RigidBody"]
 transform = Transform( 2, 0, 0, 0, 0.05, 0, 0, 0, 0.1, 0, 0.01, -0.1 )
-shape = ExtResource( 2 )
+shape = ExtResource( 1 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="RigidBody/Wall"]
 transform = Transform( -8.14603e-08, 0, -1, 0, 0.5, 0, 0.5, 0, -1.62921e-07, 0, 0.5, -0.5 )
@@ -37,7 +37,7 @@ material/0 = null
 
 [node name="Wall2" type="CollisionShape" parent="RigidBody"]
 transform = Transform( -2, 0, -3.89414e-08, 0, 0.05, 0, 7.78829e-07, 0, -0.1, 0, 0.01, 0.1 )
-shape = ExtResource( 2 )
+shape = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody/Wall2"]
 transform = Transform( -8.14603e-08, 0, -1, 0, 0.5, 0, 0.5, 0, -1.62921e-07, 0, 0.5, -0.5 )

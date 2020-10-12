@@ -21,13 +21,21 @@ var UI: Node
 onready var direction = transform.basis.x.normalized()
 var total_time = 0
 var this_scale = 1
+# Stuff to allow measurement relative to an arbitrary origin
 var StartingPoint: Vector3
-export var relative = false
+export var relative = false # If false, measurements are relative to the position of the ball when released
 export var relative_to: NodePath
 export var swap_yz_on_points = false
+# Enables being able to be kicked by other ball ( or PhysicsObject)
+export var passive = false
+# Starts measurement again after a collision
+export var aller_retour = false
+var second_round = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if aller_retour:
+		number_of_points *= 2
 	$RigidBody.set_mode(RigidBody.MODE_STATIC)
 	for q in range(number_of_points):
 		var new_point = measureemt_point.instance()
@@ -50,9 +58,20 @@ func release():
 	push = 0
 	go = 1
 
+func release_passive():
+	$RigidBody.set_mode(RigidBody.MODE_RIGID)
+	spawn_measurements = true
+
 
 func _physics_process(delta):
-	if spawn_measurements and number_of_current_point < number_of_points:
+	var max_number_of_points = 0
+	if aller_retour:
+		max_number_of_points = number_of_points / 2
+		if second_round:
+			max_number_of_points = number_of_points
+	else:
+		max_number_of_points = number_of_points
+	if spawn_measurements and number_of_current_point < max_number_of_points:
 		time = time + delta
 		total_time = total_time + delta
 		if time > time_between_measurements:
@@ -91,6 +110,17 @@ func spawn_measurement_point():
 	this_point.visible = true
 	this_point.set_coordinates((current_position.x-StartingPoint.x)*this_scale,(current_position.y-StartingPoint.y)*this_scale,(current_position.z-StartingPoint.z)*this_scale,total_time)
 	number_of_current_point += 1
+	if aller_retour and number_of_current_point > number_of_points:
+		spawn_measurements = false
 
 func increase_force():
 	force = min(force+deltaforce,maxforce)
+
+
+func _on_Area_body_entered(body):
+	if body.is_in_group("PhysicsObject") and body != $RigidBody and passive:
+		self.release()
+	if body.is_in_group("PhysicsObject") and body != $RigidBody and aller_retour:
+		print_debug("büp")
+		second_round = true
+		spawn_measurements = true
