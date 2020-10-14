@@ -27,9 +27,11 @@ shape = SubResource( 1 )
 mesh = SubResource( 2 )
 material/0 = ExtResource( 2 )
 
-[node name="Area" type="Area" parent="."]
+[node name="Area" type="Area" parent="RigidBody" groups=[
+"TestArea",
+]]
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody/Area"]
 shape = SubResource( 3 )
 [connection signal="input_event" from="RigidBody" to="." method="_on_RigidBody_input_event"]
-[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_entered" from="RigidBody/Area" to="." method="_on_Area_body_entered"]

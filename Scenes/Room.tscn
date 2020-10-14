@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Room.dae" type="PackedScene" id=1]
 [ext_resource path="res://Materials/PhysicsMaterials/VeryRoughWall.tres" type="PhysicsMaterial" id=2]
-[ext_resource path="res://Scripts/Objects/SpacePortal.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Meta/FP-Camera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Meta/InputHandler.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/InGameUI/MenuModels.tscn" type="PackedScene" id=6]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -14,40 +14,13 @@ extents = Vector3( 1.95542, 0.2, 1 )
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 10.0091, 0.38463, 6.02061 )
 
-[sub_resource type="Curve" id=4]
-_data = [ Vector2( 0, 0.609091 ), 0.0, 0.0, 0, 0, Vector2( 0.278481, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.263636 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
-
-[sub_resource type="ParticlesMaterial" id=6]
-direction = Vector3( 0, 0, 0 )
-spread = 180.0
-flatness = 1.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.1
-initial_velocity_random = 0.26
-angular_velocity = 5.0
-linear_accel_random = 1.0
-scale_random = 1.0
-scale_curve = SubResource( 5 )
-
-[sub_resource type="SpatialMaterial" id=7]
-flags_transparent = true
-albedo_color = Color( 0, 0, 0, 0.631373 )
-
-[sub_resource type="SphereMesh" id=8]
-material = SubResource( 7 )
-radius = 0.1
-height = 0.2
-
-[sub_resource type="BoxShape" id=9]
-extents = Vector3( 0.314726, 0.111336, 0.289351 )
-
 [node name="Room" type="Spatial"]
 
 [node name="Room" parent="." instance=ExtResource( 1 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 5, -1, 0 )
+
+[node name="Plane006" parent="Room" index="8"]
+transform = Transform( -1.00476, -3.25841e-07, 6.11048e-15, 0, -4.37114e-08, -0.429017, 3.27393e-07, -1, 1.87529e-08, 0, -0.0125651, 3 )
 
 [node name="Plane003" parent="Room" index="11"]
 transform = Transform( -2.63517e-08, 1, -1.87529e-08, 0, -4.37114e-08, -0.429017, -0.602857, -4.37114e-08, 8.19717e-16, -5, -0.0125651, 0 )
@@ -98,30 +71,20 @@ physics_material_override = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95335, 0, 0 )
 shape = SubResource( 3 )
 
-[node name="SpacePortal" type="Particles" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.00677395, 1.79569, -5.32545 )
-amount = 400
-lifetime = 4.0
-visibility_aabb = AABB( -1.00931, -0.981158, -0.942714, 2.01861, 1.96232, 1.88543 )
-process_material = SubResource( 6 )
-draw_pass_1 = SubResource( 8 )
-script = ExtResource( 3 )
-
-[node name="OmniLight" type="OmniLight" parent="SpacePortal"]
-light_negative = true
-omni_range = 0.7
-
-[node name="Area" type="Area" parent="SpacePortal"]
-
-[node name="CollisionShape" type="CollisionShape" parent="SpacePortal/Area"]
-shape = SubResource( 9 )
-
 [node name="FP-Camera" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.705513, 0, -0.708697, 0, 1, 0, 0.708697, 0, 0.705513, -1.53084, 1, 5.36089 )
 
 [node name="InputHandler" parent="." instance=ExtResource( 5 )]
-[connection signal="input_event" from="SpacePortal/Area" to="SpacePortal" method="_on_Area_input_event"]
-[connection signal="mouse_entered" from="SpacePortal/Area" to="SpacePortal" method="_on_Area_mouse_entered"]
-[connection signal="mouse_exited" from="SpacePortal/Area" to="SpacePortal" method="_on_Area_mouse_exited"]
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( -3.94909e-08, 0.428699, -0.903448, 1.8739e-08, 0.903448, 0.428699, 1, 1.77636e-15, -4.37114e-08, 11, 4, 0 )
+spot_range = 7.0
+spot_angle = 44.5755
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 1920, 1080 )
+
+[node name="MenuModels" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.19666, 2.26904, -5.30634 )
 
 [editable path="Room"]

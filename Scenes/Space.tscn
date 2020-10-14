@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Space_environment.tres" type="Environment" id=1]
 [ext_resource path="res://Scenes/Meta/FP-Camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Meta/InputHandler.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Materials/SpatialMaterials/Space.tres" type="Material" id=4]
-[ext_resource path="res://Scenes/UI/BasicUI.tscn" type="PackedScene" id=5]
-[ext_resource path="res://UI_Font.tres" type="DynamicFont" id=6]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -23,23 +21,6 @@ transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, -
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6678, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="."]
-anchor_left = 0.01
-anchor_top = 0.191
-anchor_right = 0.01
-anchor_bottom = 0.191
-margin_top = -11.0
-margin_right = 221.0
-margin_bottom = 11.0
-rect_scale = Vector2( 0.8, 0.8 )
-custom_fonts/font = ExtResource( 6 )
-text = "Space Texture by ESO/S. Brunier"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="OSD_UI" parent="." instance=ExtResource( 5 )]
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )

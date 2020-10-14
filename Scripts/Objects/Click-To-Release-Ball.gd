@@ -8,7 +8,7 @@ var push = 0
 var go = 0
 var spawn_measurements = false
 var time = 0
-onready var measureemt_point = preload("res://Scenes/Objects/3D_measurement_point.tscn")
+onready var measurement_point = preload("res://Scenes/Objects/3D_measurement_point.tscn")
 export var number_of_points = 15
 var measurement_points = []
 var number_of_current_point = 0
@@ -38,7 +38,7 @@ func _ready():
 		number_of_points *= 2
 	$RigidBody.set_mode(RigidBody.MODE_STATIC)
 	for q in range(number_of_points):
-		var new_point = measureemt_point.instance()
+		var new_point = measurement_point.instance()
 		new_point.visible = false
 		new_point.scale = new_point.scale * 2
 		if swap_yz_on_points:
@@ -77,6 +77,8 @@ func _physics_process(delta):
 		if time > time_between_measurements:
 			time = 0
 			spawn_measurement_point()
+	else:
+		spawn_measurements = false
 	if push == 1:
 		increase_force()
 		UI.set_force(force,maxforce)
@@ -119,8 +121,9 @@ func increase_force():
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("PhysicsObject") and body != $RigidBody and passive:
-		self.release()
+		self.release_passive()
 	if body.is_in_group("PhysicsObject") and body != $RigidBody and aller_retour:
-		print_debug("büp")
+		print_debug("allez retour")
 		second_round = true
 		spawn_measurements = true
+

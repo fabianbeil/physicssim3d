@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Blender/Gold.material" type="Material" id=1]
+[ext_resource path="res://Scenes/InGameUI/Pedestal.tscn" type="PackedScene" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[node name="1BodyLinBall" type="Spatial"]
+
+[node name="CubeModel" parent="." instance=ExtResource( 2 )]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.267044, 0.842798, 0.238565 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( -0.170914, -0.103468, -0.150276, -0.168001, 0.169562, 0.0743261, 0.0711628, 0.151799, -0.185453, 0.288118, 1.25026, -0.303465 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 1 )

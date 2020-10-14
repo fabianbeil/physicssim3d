@@ -22,7 +22,9 @@ start_text = "Test"
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 1024, 600 )
 transparent_bg = true
+msaa = 2
 hdr = false
+usage = 3
 
 [node name="Label" type="Label" parent="Viewport"]
 anchor_left = 0.43
