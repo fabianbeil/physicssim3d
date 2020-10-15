@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="PhysicsSim3D"
-run/main_scene="res://Scenes/UI/MainMenu.tscn"
+run/main_scene="res://Scenes/Default.tscn"
 config/icon="res://icon.png"
 
 [display]

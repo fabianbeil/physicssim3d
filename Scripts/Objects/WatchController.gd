@@ -17,7 +17,7 @@ func _ready():
 			uhren.append(node)
 		if node.is_in_group("Origin"):
 			starter = node
-	print_debug(starter)
+	#print_debug(starter)
 	if starter != null:
 		starter.connect("start_measuring", self, "_on_start_measuring")
 		for uhr in uhren:

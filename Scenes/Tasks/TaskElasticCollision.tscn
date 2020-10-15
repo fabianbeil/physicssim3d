@@ -7,7 +7,6 @@
 [node name="TaskElasticCollision" type="Spatial"]
 
 [node name="ExpElasticCollision" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 
 [node name="Room" parent="." instance=ExtResource( 4 )]
 

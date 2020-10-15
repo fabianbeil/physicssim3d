@@ -6,28 +6,29 @@
 
 [node name="ExpElasticCollision" type="Spatial"]
 
-[node name="NoFrictionRail" parent="." instance=ExtResource( 2 )]
+[node name="ElasticSameMass" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0 )
+
+[node name="NoFrictionRail" parent="ElasticSameMass" instance=ExtResource( 2 )]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 1, -0.315466, 0.77401, 0 )
 
-[node name="FrictionEndBlock" parent="." instance=ExtResource( 3 )]
+[node name="FrictionEndBlock" parent="ElasticSameMass" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 0.85, 0 )
 
-[node name="FrictionEndBlock2" parent="." instance=ExtResource( 3 )]
+[node name="FrictionEndBlock2" parent="ElasticSameMass" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66837, 0.85, 0 )
 
-[node name="ClickToReleaseBall" parent="." instance=ExtResource( 1 )]
+[node name="ClickToReleaseBall" parent="ElasticSameMass" instance=ExtResource( 1 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 0 )
 number_of_points = 4
 measurement_point_rotation = Vector3( 0, 90, 0 )
 passive = true
 
-[node name="ClickToReleaseBall2" parent="." instance=ExtResource( 1 )]
+[node name="ClickToReleaseBall2" parent="ElasticSameMass" instance=ExtResource( 1 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.722, 1, 0 )
 number_of_points = 4
 measurement_point_rotation = Vector3( 0, 90, 0 )
 aller_retour = true
-
-[node name="ElasticSameMass" type="Spatial" parent="."]
 
 [node name="Spatial2" type="Spatial" parent="."]
 

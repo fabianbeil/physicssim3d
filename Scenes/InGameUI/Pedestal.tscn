@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://Scripts/InGameUI/Pedestal.gd" type="Script" id=1]
 [ext_resource path="res://Blender/WoodStand.material" type="Material" id=2]
 
-[sub_resource type="ArrayMesh" id=2]
+[sub_resource type="ArrayMesh" id=1]
 resource_name = "Cylinder"
 surfaces/0 = {
 "aabb": AABB( -1, -1, -1, 2, 5.7878, 2 ),
@@ -18,9 +19,19 @@ surfaces/0 = {
 "vertex_count": 843
 }
 
-[node name="CubeModel" type="Spatial"]
+[sub_resource type="BoxShape" id=3]
+
+[node name="Pedestal" type="Spatial"]
+script = ExtResource( 1 )
 
 [node name="Cylinder" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.0777023, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 1 )
 material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00463, 0 )
+shape = SubResource( 3 )
+[connection signal="input_event" from="StaticBody" to="." method="_on_StaticBody_input_event"]

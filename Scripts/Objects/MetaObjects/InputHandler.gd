@@ -24,12 +24,14 @@ func _ready():
 	FPS_Body = get_tree().get_nodes_in_group("CameraBody")[0]
 	if len(get_tree().get_nodes_in_group("TaskUI")) > 0:
 		TaskUI = get_tree().get_nodes_in_group("TaskUI")[0]
+	set_mouse_view("fly")
 	
 func shoot_click_ray():
 	var space_state = get_world().direct_space_state
 	var result = space_state.intersect_ray(click_ray_from, click_ray_to, [self, FPS_Body])
 	if result:
 		var RB_Parent = result.collider.get_parent()
+		print_debug(RB_Parent)
 		if RB_Parent.has_method("click") and click_or_release == "click":
 			RB_Parent.click()
 		if RB_Parent.has_method("release") and click_or_release == "release":
@@ -90,7 +92,10 @@ func _input(event):
 		mouse_sensitivity = max(0,mouse_sensitivity - 0.01)
 			
 	if event.is_action_pressed("toggle_mouse"):
-		toggle_mouse_view()
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			set_mouse_view("fly")
+		else:
+			set_mouse_view("mouse")
 	
 	if event.is_action_pressed("toggle_zoom"):
 		toggle_zoom()
@@ -104,12 +109,14 @@ func toggle_zoom():
 	else:
 		FPS_Cam.fov = 80
 		
-func toggle_mouse_view():
-	if Input.get_mouse_mode() == 0:
+func set_mouse_view(mode):
+	if mode == "fly":
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	elif Input.get_mouse_mode() == 2:
+		if TaskUI != null:
+			TaskUI.haircross(true)
+	elif mode == "mouse":
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if TaskUI != null:
-		TaskUI.toggle_haircross()
+		if TaskUI != null:
+			TaskUI.haircross(false)
 		
 

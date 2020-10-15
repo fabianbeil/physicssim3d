@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Objects/Click-To-Release-Ball.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Objects/FrictionRail.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Objects/Click-To-Release-Ball.tscn" type="PackedScene" id=3]
+
+[node name="Exp_Tilted_Ramp" type="Spatial"]
+
+[node name="FrictionRail" type="Spatial" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.985803, 0.167904, 0, -0.167904, 0.985803, 0, 0, 0, 1, 1.83342, 0, 0 )
+
+[node name="ClickToReleaseBall" type="Spatial" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.00175595, 0.427122, 0 )
+script = ExtResource( 1 )
+time_between_measurements = 0.2
+measurement_point_rotation = Vector3( 0, 90, 0 )
