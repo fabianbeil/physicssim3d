@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Room.dae" type="PackedScene" id=1]
 [ext_resource path="res://Materials/PhysicsMaterials/VeryRoughWall.tres" type="PhysicsMaterial" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Meta/FP-Camera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Meta/InputHandler.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/InGameUI/MenuModels.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/InGameUI/ExitSign.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.623529, 0.623529, 0.635294, 1 )
@@ -112,6 +113,9 @@ transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.19666, 2.26904, -5.30
 transform = Transform( -5.70222e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -5.70222e-08, 14.99, 2.20066, 0 )
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
+
+[node name="ExitSign" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.2, 0, 0, 0, -4.37114e-09, -0.2, 0, 0.1, -8.74228e-09, 11.3832, 2.28238, -5.95755 )
 
 [editable path="Room"]
 

@@ -15,6 +15,7 @@ visible = false
 [node name="Room" parent="." instance=ExtResource( 6 )]
 
 [node name="Exp_Resetter" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.597041, 0.370285, 0 )
 experiment = NodePath("../Exp_Tilted_Ramp")
 
 [node name="Exp_Tilted_Ramp" parent="." instance=ExtResource( 1 )]

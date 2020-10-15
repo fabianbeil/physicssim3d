@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://Scenes/Objects/Exp_Resetter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Experiments/Exp_linearMotion_Ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/UI/BasicUI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Tasks/1BodyLinearMotion_sphere.gd" type="Script" id=4]
@@ -13,3 +14,7 @@ script = ExtResource( 4 )
 [node name="Exp_linearMotion_Ball" parent="." instance=ExtResource( 2 )]
 
 [node name="Room" parent="." instance=ExtResource( 6 )]
+
+[node name="Exp_Resetter" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.808376, 0, 0 )
+experiment = NodePath("../Exp_linearMotion_Ball")

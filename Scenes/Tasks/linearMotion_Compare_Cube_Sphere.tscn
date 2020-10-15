@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://Scenes/Objects/Exp_Resetter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Experiments/Exp_linearMotion_Cube.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/UI/BasicUI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Experiments/Exp_linearMotion_Ball.tscn" type="PackedScene" id=5]
@@ -18,3 +19,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.18399 )
 [node name="BasicUI" parent="." instance=ExtResource( 3 )]
 
 [node name="Room" parent="." instance=ExtResource( 7 )]
+
+[node name="Exp_Resetter" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782429, 0, 1.2081 )
+experiment = NodePath("../Exp_linearMotion_Cube")
+
+[node name="Exp_Resetter2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782429, 0, -1.16783 )
+experiment = NodePath("../Exp_linearMotion_Ball")

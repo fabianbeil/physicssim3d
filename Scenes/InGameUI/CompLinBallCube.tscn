@@ -10,6 +10,7 @@
 [node name="1BodyLinBall" type="Spatial"]
 
 [node name="CubeModel" parent="." instance=ExtResource( 2 )]
+Path_to_Scene = "res://Scenes/Tasks/linearMotion_Compare_Cube_Sphere.tscn"
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.267044, 0.842798, 0.238565 )
