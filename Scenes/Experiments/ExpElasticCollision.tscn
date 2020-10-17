@@ -26,7 +26,7 @@ passive = true
 
 [node name="ClickToReleaseBall2" parent="ElasticSameMass" instance=ExtResource( 1 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.722, 1, 0 )
-number_of_points = 4
+number_of_points = 0
 measurement_point_rotation = Vector3( 0, 90, 0 )
 aller_retour = true
 

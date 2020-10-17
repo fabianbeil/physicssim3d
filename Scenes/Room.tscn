@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Room.dae" type="PackedScene" id=1]
 [ext_resource path="res://Materials/PhysicsMaterials/VeryRoughWall.tres" type="PhysicsMaterial" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Scenes/Meta/InputHandler.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/InGameUI/MenuModels.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/InGameUI/ExitSign.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Objects/Stuff_for_Room/M.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Objects/Stuff_for_Room/Plaque_1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/InGameUI/SpacePortal.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.623529, 0.623529, 0.635294, 1 )
@@ -40,6 +43,9 @@ visible = false
 [node name="Plane003" parent="Room" index="11"]
 transform = Transform( -2.63517e-08, 1, -1.87529e-08, 0, -4.37114e-08, -0.429017, -0.602857, -4.37114e-08, 8.19717e-16, -5, -0.0125651, 0 )
 visible = false
+
+[node name="Plane002" parent="Room" index="12"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -0.429017, 0, 1, -1.87529e-08, 0, -0.0125651, -3 )
 
 [node name="Plane" parent="Room" index="14"]
 material/0 = SubResource( 1 )
@@ -107,7 +113,7 @@ spot_angle = 39.3974
 size = Vector2( 1920, 1080 )
 
 [node name="MenuModels" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.19666, 2.26904, -5.30634 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.26517, 2.26904, -5.30634 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="."]
 transform = Transform( -5.70222e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -5.70222e-08, 14.99, 2.20066, 0 )
@@ -116,6 +122,15 @@ material/0 = SubResource( 6 )
 
 [node name="ExitSign" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.2, 0, 0, 0, -4.37114e-09, -0.2, 0, 0.1, -8.74228e-09, 11.3832, 2.28238, -5.95755 )
+
+[node name="M" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0.487347, -0.0236578, 0.436949, 0, 0.488671, 0.423332, -0.11177, -0.103155, 1.90522, 0.0603861, 3.01082, -4.86868 )
+
+[node name="Plaque_1" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.0973702, 0, 0.0227824, 0, 0.1, 0, -0.0227824, 0, 0.0973702, -1.40549, 2.29183, -4.90127 )
+
+[node name="SpacePortal" parent="." instance=ExtResource( 10 )]
+transform = Transform( -0.399963, 0.00547323, -2.39242e-10, 0, -1.74846e-08, -0.4, -0.00547323, -0.399963, 1.74829e-08, 14.1162, 0.947516, 5.74996 )
 
 [editable path="Room"]
 

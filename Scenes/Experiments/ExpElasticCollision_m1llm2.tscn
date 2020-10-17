@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Objects/Click-To-Release-Ball.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Objects/NoFrictionRail.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Objects/FrictionEndBlock.tscn" type="PackedScene" id=3]
+
+[node name="ExpElasticCollision_m1ggm2" type="Spatial"]
+
+[node name="ElasticSameMass" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0 )
+
+[node name="NoFrictionRail" parent="ElasticSameMass" instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 1, -0.315466, 0.77401, 0 )
+
+[node name="FrictionEndBlock" parent="ElasticSameMass" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 0.85, 0 )
+
+[node name="FrictionEndBlock2" parent="ElasticSameMass" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66837, 0.85, 0 )
+
+[node name="ClickToReleaseBall" parent="ElasticSameMass" instance=ExtResource( 1 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 0 )
+number_of_points = 0
+measurement_point_rotation = Vector3( 0, 90, 0 )
+passive = true
+
+[node name="RigidBody" parent="ElasticSameMass/ClickToReleaseBall" index="0"]
+mass = 2.0
+
+[node name="ClickToReleaseBall2" parent="ElasticSameMass" instance=ExtResource( 1 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.722, 1, 0 )
+number_of_points = 4
+measurement_point_rotation = Vector3( 0, 90, 0 )
+aller_retour = true
+
+[node name="Spatial2" type="Spatial" parent="."]
+
+[node name="Spatial3" type="Spatial" parent="."]
+
+[editable path="ElasticSameMass/ClickToReleaseBall"]
+
+[editable path="ElasticSameMass/ClickToReleaseBall2"]

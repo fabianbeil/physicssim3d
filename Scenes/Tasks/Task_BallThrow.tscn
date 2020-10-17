@@ -8,7 +8,8 @@
 [node name="Task_BallThrow" type="Spatial"]
 
 [node name="ClickToReleaseBall" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 2, 0 )
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 2, 0 )
+number_of_points = 25
 measurement_point_rotation = Vector3( 0, 90, 0 )
 
 [node name="OSD_UI" parent="." instance=ExtResource( 3 )]

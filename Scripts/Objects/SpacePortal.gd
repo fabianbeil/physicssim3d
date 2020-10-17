@@ -30,11 +30,11 @@ func _physics_process(delta):
 			
 
 func _on_Area_mouse_entered():
-	increase_darkness = true
+	pass#increase_darkness = true
 
 
 func _on_Area_mouse_exited():
-	decrease_darkness = true
+	pass#decrease_darkness = true
 
 
 func _on_Area_input_event(camera, event, click_position, click_normal, shape_idx):
