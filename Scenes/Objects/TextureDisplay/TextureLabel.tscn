@@ -4,6 +4,3 @@
 
 [node name="TextureLabel" type="Spatial"]
 script = ExtResource( 5 )
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
