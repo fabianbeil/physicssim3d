@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/InGameUI/Pedestal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Blender/Gold.material" type="Material" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="CylinderMesh" id=2]
+
+[node name="Model_Pendulum" type="Spatial"]
+
+[node name="Pedestal" parent="." instance=ExtResource( 1 )]
+Path_to_Scene = "res://Scenes/Tasks/Task-Pendulum.tscn"
+
+[node name="MeshInstance" type="MeshInstance" parent="Pedestal"]
+transform = Transform( 0.184531, -0.0771265, 0, 0.0771265, 0.184531, 0, 0, 0, 0.2, 0.340152, 0.842643, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Pedestal/MeshInstance"]
+transform = Transform( 0.1, -1.19209e-07, 0, 0, 3, 0, 0, 0, 0.1, 0, 3.76752, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )

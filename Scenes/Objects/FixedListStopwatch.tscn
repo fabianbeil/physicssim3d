@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Materials/SpatialMaterials/Stopwatch-green.tres" type="Material" id=1]
 [ext_resource path="res://Scripts/Objects/FixedListStopwatch.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Objects/DigitalDisplay.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Objects/HintArrow.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.01, 1, 1 )
@@ -38,5 +39,8 @@ start_text = "Mittelwert"
 [node name="display_mean" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 2, 0, 1.25 )
 start_text = "0 s"
+
+[node name="Arrow" parent="." instance=ExtResource( 4 )]
+transform = Transform( -1.62921e-08, 0.1, 0, -0.1, -1.62921e-08, 0, 0, 0, 0.1, 0, 0.0453323, 0.226522 )
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

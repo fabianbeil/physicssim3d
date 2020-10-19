@@ -9,6 +9,7 @@ onready var display = preload("res://Scenes/Objects/DigitalDisplay.tscn")
 var elapsed_time = 0.0
 var times = []
 var time_displays = []
+var even = true
 onready var display_mean = $display_mean
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,14 +36,9 @@ func _physics_process(delta):
 	if passes > 0:
 		elapsed_time += delta
 
-
-func _on_Area_body_entered(body):
-	pass#if passes > 0:
-		#mark_time()
-	#passes +=1
-
-
 func _on_Area_area_entered(area):
-	if passes > 0:
-		mark_time()
-	passes +=1
+	if area.is_in_group("StopWatchTrigger"):
+		if passes > 0 and even:
+			mark_time()
+		passes +=1
+		even = !even
