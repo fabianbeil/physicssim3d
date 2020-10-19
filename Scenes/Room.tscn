@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Room.dae" type="PackedScene" id=1]
 [ext_resource path="res://Materials/PhysicsMaterials/VeryRoughWall.tres" type="PhysicsMaterial" id=2]
@@ -10,8 +10,6 @@
 [ext_resource path="res://Scenes/Objects/Stuff_for_Room/M.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Objects/Stuff_for_Room/Plaque_1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/InGameUI/SpacePortal.tscn" type="PackedScene" id=10]
-[ext_resource path="res://addons/SIsilicon.3d.text/label_3d.gd" type="Script" id=11]
-[ext_resource path="res://DisplayFont.tres" type="DynamicFont" id=12]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.623529, 0.623529, 0.635294, 1 )
@@ -133,74 +131,6 @@ transform = Transform( 0.0973702, 0, 0.0227824, 0, 0.1, 0, -0.0227824, 0, 0.0973
 
 [node name="SpacePortal" parent="." instance=ExtResource( 10 )]
 transform = Transform( -0.399963, 0.00547323, -2.39242e-10, 0, -1.74846e-08, -0.4, -0.00547323, -0.399963, 1.74829e-08, 14.1162, 0.947516, 5.74996 )
-
-[node name="Label3D" type="Spatial" parent="."]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -1.26519, 2.95231, -4.82582 )
-script = ExtResource( 11 )
-text = "a
-"
-text_size = 0.2
-font = ExtResource( 12 )
-align = 0
-color = Color( 0.305882, 0.305882, 0.333333, 1 )
-metallic = 0.0
-roughness = 1.0
-emission_color = Color( 1, 1, 1, 1 )
-emission_strength = 0.0
-extrude = 0.0
-max_steps = 256
-step_size = 1.0
-
-[node name="Label3D2" type="Spatial" parent="."]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.764036, 2.95231, -4.82582 )
-script = ExtResource( 11 )
-text = "b
-"
-text_size = 0.2
-font = ExtResource( 12 )
-align = 0
-color = Color( 0.305882, 0.305882, 0.333333, 1 )
-metallic = 0.0
-roughness = 1.0
-emission_color = Color( 1, 1, 1, 1 )
-emission_strength = 0.0
-extrude = 0.0
-max_steps = 256
-step_size = 1.0
-
-[node name="Label3D3" type="Spatial" parent="."]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.252191, 2.95231, -4.82582 )
-script = ExtResource( 11 )
-text = "c
-"
-text_size = 0.2
-font = ExtResource( 12 )
-align = 0
-color = Color( 0.305882, 0.305882, 0.333333, 1 )
-metallic = 0.0
-roughness = 1.0
-emission_color = Color( 1, 1, 1, 1 )
-emission_strength = 0.0
-extrude = 0.0
-max_steps = 256
-step_size = 1.0
-
-[node name="Label3D4" type="Spatial" parent="."]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.244963, 2.95231, -4.82582 )
-script = ExtResource( 11 )
-text = "d
-"
-text_size = 0.2
-font = ExtResource( 12 )
-align = 0
-color = Color( 0.305882, 0.305882, 0.333333, 1 )
-metallic = 0.0
-roughness = 1.0
-emission_color = Color( 1, 1, 1, 1 )
-emission_strength = 0.0
-extrude = 0.0
-max_steps = 256
-step_size = 1.0
 
 [editable path="Room"]
 
