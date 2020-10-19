@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Room.dae" type="PackedScene" id=1]
 [ext_resource path="res://Materials/PhysicsMaterials/VeryRoughWall.tres" type="PhysicsMaterial" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/Objects/Stuff_for_Room/M.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Objects/Stuff_for_Room/Plaque_1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/InGameUI/SpacePortal.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Objects/DigitalDisplay.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.623529, 0.623529, 0.635294, 1 )
@@ -131,6 +132,22 @@ transform = Transform( 0.0973702, 0, 0.0227824, 0, 0.1, 0, -0.0227824, 0, 0.0973
 
 [node name="SpacePortal" parent="." instance=ExtResource( 10 )]
 transform = Transform( -0.399963, 0.00547323, -2.39242e-10, 0, -1.74846e-08, -0.4, -0.00547323, -0.399963, 1.74829e-08, 14.1162, 0.947516, 5.74996 )
+
+[node name="DigitalDisplay" parent="." instance=ExtResource( 11 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.2661, 2.90925, -4.82439 )
+start_text = "a"
+
+[node name="DigitalDisplay2" parent="." instance=ExtResource( 11 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.265617, 2.90925, -4.82439 )
+start_text = "c"
+
+[node name="DigitalDisplay3" parent="." instance=ExtResource( 11 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.773324, 2.90925, -4.82439 )
+start_text = "b"
+
+[node name="DigitalDisplay4" parent="." instance=ExtResource( 11 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.237599, 2.90925, -4.82439 )
+start_text = "d"
 
 [editable path="Room"]
 
