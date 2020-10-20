@@ -37,7 +37,7 @@ func shoot_click_ray():
 		if RB_Parent.has_method("release") and click_or_release == "release":
 			RB_Parent.release()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if click_ray:
 		shoot_click_ray()
 		click_ray = false
@@ -113,10 +113,10 @@ func set_mouse_view(mode):
 	if mode == "fly":
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if TaskUI != null:
-			TaskUI.haircross(true)
+			TaskUI.set_haircross(true)
 	elif mode == "mouse":
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		if TaskUI != null:
-			TaskUI.haircross(false)
+			TaskUI.set_haircross(false)
 		
 

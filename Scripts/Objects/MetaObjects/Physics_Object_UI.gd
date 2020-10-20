@@ -12,7 +12,7 @@ onready var haircross = get_node("Haircross")
 func _ready():
 	pass
 	
-func haircross(onoff):
+func set_haircross(onoff):
 	if onoff == true:
 		haircross.visible = true
 	else:

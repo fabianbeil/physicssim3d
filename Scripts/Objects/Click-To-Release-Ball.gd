@@ -9,6 +9,8 @@ var go = 0
 var spawn_measurements = false
 var time = 0
 onready var measurement_point = preload("res://Scenes/Objects/3D_measurement_point.tscn")
+onready var measurement_point_dataonly = preload("res://Scenes/Objects/3D_measurement_point_Data_only.tscn")
+export var no_labels: bool
 export var number_of_points = 15
 var measurement_points = []
 var number_of_current_point = 0
@@ -37,17 +39,9 @@ func _ready():
 	if aller_retour:
 		number_of_points *= 2
 	$RigidBody.set_mode(RigidBody.MODE_STATIC)
-	for q in range(number_of_points):
-		var new_point = measurement_point.instance()
-		new_point.visible = false
-		new_point.scale = new_point.scale * 2
-		if swap_yz_on_points:
-			new_point.swap_yz = true
-		add_child(new_point)
-		measurement_points.append(new_point)
+	prepare_measurement_points()
 	this_scale = transform.basis.get_scale().x
 	UI = get_tree().get_nodes_in_group("TaskUI")[0]
-		
 	
 func click():
 	push = 1 
@@ -62,6 +56,20 @@ func release_passive():
 	$RigidBody.set_mode(RigidBody.MODE_RIGID)
 	spawn_measurements = true
 
+func prepare_measurement_points():
+	for q in range(number_of_points):
+		var new_point: Node
+		if !no_labels:
+			new_point = measurement_point.instance()
+		else:
+			new_point = measurement_point_dataonly.instance()
+			print_debug("use_dataonly")
+		new_point.visible = false
+		new_point.scale = new_point.scale * 2
+		if swap_yz_on_points:
+			new_point.swap_yz = true
+		add_child(new_point)
+		measurement_points.append(new_point)
 
 func _physics_process(delta):
 	var max_number_of_points = 0
@@ -88,7 +96,6 @@ func _physics_process(delta):
 		go = 0
 		if relative:
 			StartingPoint = get_node(relative_to).transform.origin
-			print_debug(StartingPoint, transform.origin)
 		else:
 			StartingPoint = transform.origin
 
@@ -110,6 +117,8 @@ func spawn_measurement_point():
 	this_point.transform.origin = current_position
 	this_point.rotation_degrees = measurement_point_rotation
 	this_point.visible = true
+	if passive:
+		this_point.set_color(1)
 	this_point.set_coordinates((current_position.x-StartingPoint.x)*this_scale,(current_position.y-StartingPoint.y)*this_scale,(current_position.z-StartingPoint.z)*this_scale,total_time)
 	number_of_current_point += 1
 	if aller_retour and number_of_current_point > number_of_points:
@@ -123,7 +132,6 @@ func _on_Area_body_entered(body):
 	if body.is_in_group("PhysicsObject") and body != $RigidBody and passive:
 		self.release_passive()
 	if body.is_in_group("PhysicsObject") and body != $RigidBody and aller_retour:
-		print_debug("allez retour")
 		second_round = true
 		spawn_measurements = true
 

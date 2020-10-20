@@ -6,21 +6,20 @@ extends Spatial
 export var include_z = false
 export var swap_yz = false
 onready var material_green = preload("res://Materials/SpatialMaterials/BrightGreen.tres")
-
+var measurement_position = Vector3(0,0,0)
+var measurement_time = 0
+var y = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if not include_z:
-		$PositionDisplay_z.visible = false
+	pass
+	
 func set_coordinates(x,y,z,t):
 	if swap_yz:
 		var y_hilf = y
 		y = z
 		z = y_hilf
-	$PositionDisplay_x.set_text("x: "+"%.3f"%x +"m")
-	$PositionDisplay_y.set_text("y: "+ "%.3f"%y +"m")
-	$PositionDisplay_z.set_text("z: "+ "%.3f"%z +"m")
-	
-	$TimeDisplay.set_text("t: "+ "%.2f"%t +"s")
+	measurement_position = Vector3(x,y,z)
+	measurement_time = t
 	
 func set_color(color_index):
 	if color_index == 1:
