@@ -8,7 +8,6 @@ export var swap_yz = false
 onready var material_green = preload("res://Materials/SpatialMaterials/BrightGreen.tres")
 var measurement_position = Vector3(0,0,0)
 var measurement_time = 0
-var y = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

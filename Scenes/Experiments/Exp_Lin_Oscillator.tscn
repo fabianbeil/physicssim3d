@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Objects/Click-To-Release-Ball.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Experiments/Exp_Lin_Oscillator.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 4, 1 )
+
+[node name="Oscillator" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="."]
+space_override = 3
+linear_damp = 0.5
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="ClickToReleaseBall" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+no_labels = true
+Force_Direction = Vector3( 0, -1, 0 )
+
+[node name="RigidBody" parent="ClickToReleaseBall" index="0"]
+linear_damp = 0.1
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+
+[editable path="ClickToReleaseBall"]

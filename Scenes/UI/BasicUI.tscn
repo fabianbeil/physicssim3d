@@ -166,7 +166,6 @@ texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
 
 [node name="Haircross" type="TextureRect" parent="TaskUI"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

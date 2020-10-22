@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/InGameUI/1BodyLinCube.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/InGameUI/Model_BallThrow.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/InGameUI/CompLinBallCube.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/InGameUI/Model_ElasticCollisions.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/InGameUI/Model_Pendulum.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/InGameUI/Model_Lin_Osc.tscn" type="PackedScene" id=7]
 
 [node name="MenuModels" type="Spatial"]
 
@@ -25,5 +26,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
 
 [node name="Model_Pendulum" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -4, 0 )
+
+[node name="Model_Lin_Osc" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -4, 0 )
 
 [editable path="1BodyLinBall"]

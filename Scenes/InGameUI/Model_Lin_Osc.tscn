@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/InGameUI/Pedestal.tscn" type="PackedScene" id=1]
+
+[node name="Model_Lin_Osc" type="Spatial"]
+
+[node name="Pedestal" parent="." instance=ExtResource( 1 )]
+Path_to_Scene = "res://Scenes/Tasks/Task_Lin_Oscillator.tscn"

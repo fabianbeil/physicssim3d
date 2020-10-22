@@ -1,0 +1,10 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+font_path = "res://JetBrainsMono-2.001/ttf/JetBrainsMono-Bold.ttf"
+
+[resource]
+size = 64
+use_mipmaps = true
+font_data = SubResource( 1 )

@@ -21,6 +21,7 @@ export var maxforce = 500
 var force = 0
 var UI: Node
 onready var direction = transform.basis.x.normalized()
+export var Force_Direction =  Vector3(1,0,0)
 var total_time = 0
 var this_scale = 1
 # Stuff to allow measurement relative to an arbitrary origin
@@ -91,7 +92,7 @@ func _physics_process(delta):
 		increase_force()
 		UI.set_force(force,maxforce)
 	if go:
-		$RigidBody.add_central_force(direction*force)
+		$RigidBody.add_central_force(Force_Direction*force)
 		UI.set_force(0,1)
 		go = 0
 		if relative:
