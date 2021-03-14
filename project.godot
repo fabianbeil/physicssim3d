@@ -79,6 +79,7 @@ toggle_zoom={
 [physics]
 
 3d/physics_engine="Bullet"
+3d/active_soft_world=false
 3d/default_gravity=9.807
 3d/default_linear_damp=-1.0
 3d/default_angular_damp=-1.0

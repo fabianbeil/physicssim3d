@@ -2,7 +2,7 @@
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
-font_path = "res://pt-sans.regular.ttf"
+font_path = "res://Fonts/VeraMono.ttf"
 
 [resource]
 size = 200

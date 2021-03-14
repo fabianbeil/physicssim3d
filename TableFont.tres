@@ -2,9 +2,9 @@
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
-font_path = "res://JetBrainsMono-2.001/ttf/JetBrainsMono-Bold.ttf"
+font_path = "res://Fonts/VeraMono.ttf"
 
 [resource]
-size = 64
+size = 20
 use_mipmaps = true
 font_data = SubResource( 1 )

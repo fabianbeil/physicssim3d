@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Objects/Coupled Oscillator.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 4, 1 )
+
+[sub_resource type="CylinderShape" id=2]
+radius = 3.0
+height = 6.38196
+
+[sub_resource type="SphereShape" id=3]
+
+[sub_resource type="SphereMesh" id=4]
+
+[node name="Coupled Oscillator" type="Spatial"]
+script = ExtResource( 1 )
+elastic_constant = 0.0
+coupling_constant = 30.0
+
+[node name="Spring" type="Area" parent="."]
+space_override = 3
+gravity = 0.0
+linear_damp = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Spring"]
+shape = SubResource( 1 )
+
+[node name="Coupling" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Coupling"]
+shape = SubResource( 2 )
+
+[node name="RigidBody" type="RigidBody" parent="." groups=[
+"Oscillator",
+]]
+gravity_scale = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody/CollisionShape"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.2383 )
+[connection signal="body_entered" from="Coupling" to="." method="_on_Coupling_body_entered"]

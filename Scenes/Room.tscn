@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Room.dae" type="PackedScene" id=1]
 [ext_resource path="res://Materials/PhysicsMaterials/VeryRoughWall.tres" type="PhysicsMaterial" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://Scenes/InGameUI/ExitSign.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Objects/Stuff_for_Room/M.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Objects/Stuff_for_Room/Plaque_1.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/InGameUI/SpacePortal.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Objects/DigitalDisplay.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -35,8 +34,39 @@ albedo_texture = ExtResource( 3 )
 [node name="Room" parent="." instance=ExtResource( 1 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 5, -1, 0 )
 
+[node name="Cube006" parent="Room" index="3"]
+use_in_baked_light = true
+
+[node name="Cube001" parent="Room" index="4"]
+use_in_baked_light = true
+
+[node name="Cube002" parent="Room/Cube001" index="0"]
+use_in_baked_light = true
+
+[node name="Cube003" parent="Room/Cube001" index="1"]
+use_in_baked_light = true
+
+[node name="Cube004" parent="Room/Cube001" index="2"]
+use_in_baked_light = true
+
+[node name="Cube005" parent="Room/Cube001" index="3"]
+use_in_baked_light = true
+
+[node name="Cylinder002" parent="Room" index="5"]
+use_in_baked_light = true
+
+[node name="Cube" parent="Room" index="6"]
+use_in_baked_light = true
+
+[node name="Cylinder001" parent="Room" index="7"]
+use_in_baked_light = true
+
 [node name="Plane006" parent="Room" index="8"]
 transform = Transform( -1.00476, -3.25841e-07, 6.11048e-15, 0, -4.37114e-08, -0.429017, 3.27393e-07, -1, 1.87529e-08, 0, -0.0125651, 3 )
+use_in_baked_light = true
+
+[node name="Plane005" parent="Room" index="9"]
+use_in_baked_light = true
 
 [node name="Plane004" parent="Room" index="10"]
 visible = false
@@ -47,8 +77,13 @@ visible = false
 
 [node name="Plane002" parent="Room" index="12"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -0.429017, 0, 1, -1.87529e-08, 0, -0.0125651, -3 )
+use_in_baked_light = true
+
+[node name="Plane001" parent="Room" index="13"]
+use_in_baked_light = true
 
 [node name="Plane" parent="Room" index="14"]
+use_in_baked_light = true
 material/0 = SubResource( 1 )
 
 [node name="Camera" parent="Room" index="15"]
@@ -56,8 +91,9 @@ visible = false
 
 [node name="Light" parent="Room" index="16"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 2.1017, 0 )
+visible = false
 light_color = Color( 0.996078, 0.980392, 0.882353, 1 )
-light_energy = 1.5
+light_energy = 3.0
 omni_range = 10.0
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
@@ -110,9 +146,6 @@ light_energy = 3.0
 spot_range = 7.0
 spot_angle = 39.3974
 
-[node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 1920, 1080 )
-
 [node name="MenuModels" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.26517, 2.26904, -5.30634 )
 
@@ -130,9 +163,6 @@ transform = Transform( 0.487347, -0.0236578, 0.436949, 0, 0.488671, 0.423332, -0
 [node name="Plaque_1" parent="." instance=ExtResource( 9 )]
 transform = Transform( 0.0973702, 0, 0.0227824, 0, 0.1, 0, -0.0227824, 0, 0.0973702, -1.40549, 2.29183, -4.90127 )
 
-[node name="SpacePortal" parent="." instance=ExtResource( 10 )]
-transform = Transform( -0.399963, 0.00547323, -2.39242e-10, 0, -1.74846e-08, -0.4, -0.00547323, -0.399963, 1.74829e-08, 14.1162, 0.947516, 5.74996 )
-
 [node name="DigitalDisplay" parent="." instance=ExtResource( 11 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.2661, 2.90925, -4.82439 )
 start_text = "a"
@@ -148,6 +178,17 @@ start_text = "b"
 [node name="DigitalDisplay4" parent="." instance=ExtResource( 11 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.237599, 2.90925, -4.82439 )
 start_text = "d"
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.97457, 3.2034, 0.0836403 )
+light_color = Color( 0.992157, 0.988235, 0.905882, 1 )
+light_indirect_energy = 2.0
+omni_range = 19.3
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.722605, -0.416974, 0.551339, 0, 0.797584, 0.603208, -0.691261, -0.435881, 0.576338, 11.8473, 6.08047, 3.25247 )
+light_color = Color( 0.996078, 0.890196, 0.572549, 1 )
+light_energy = 0.3
 
 [editable path="Room"]
 
