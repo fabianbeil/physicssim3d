@@ -191,5 +191,4 @@ light_color = Color( 0.996078, 0.890196, 0.572549, 1 )
 light_energy = 0.3
 
 [editable path="Room"]
-
 [editable path="FP-Camera"]

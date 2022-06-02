@@ -10,3 +10,5 @@
 [node name="Room" parent="." instance=ExtResource( 2 )]
 
 [editable path="Room"]
+[editable path="Room/Room"]
+[editable path="Room/FP-Camera"]
